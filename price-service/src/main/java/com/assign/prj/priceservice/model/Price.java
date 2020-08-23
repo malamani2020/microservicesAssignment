@@ -1,58 +1,87 @@
 package com.assign.prj.priceservice.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import java.math.BigDecimal;
+import com.assign.prj.priceservice.model.Price;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+	@Entity
+	public class Price implements Comparable<Price>{
 
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Price {
+		@Id
+		@GeneratedValue
+		private int id;
+		private String name;
+		
+		/**
+		 * @return the id
+		 */
+		public int getId() {
+			return id;
+		}
+		
+		public Price() {
+			super();
+		}
 
-	public Price(String string, String string2, String string3) {
-		// TODO Auto-generated constructor stub
-	}
+		public Price(int id, String name, double price_value) {
+			this.id = id;
+			this.name = name;
+			this.price_value = price_value;
+		}
 
-	public String getAccountId() {
-		return accountId;
-	}
+		/**
+		 * @param id the id to set
+		 */
+		public void setId(int id) {
+			this.id = id;
+		}
 
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
-	}
+		/**
+		 * @return the name
+		 */
+		public String getName() {
+			return name;
+		}
 
-	public String getAccountName() {
-		return accountName;
-	}
+		/**
+		 * @param name the name to set
+		 */
+		public void setName(String name) {
+			this.name = name;
+		}
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
+		/**
+		 * @return the price
+		 */
+		public double getPrice() {
+			return price_value;
+		}
 
-	public String getPrice() {
-		return price;
-	}
+		/**
+		 * @param price the price to set
+		 */
+		public void setPrice(double price) {
+			this.price_value = price;
+		}
+		private double price_value;
+		
+		@Override
+		public String toString() {
+		StringBuffer str = new StringBuffer();
+		str.append("id::"+this.id);
+		str.append(":name::"+this.name);
+		str.append(":price::"+this.price_value);
+		
+		return str.toString();
+		}
 
-	public void setPrice(String price) {
-		this.price = price;
-	}
+		@Override
+		public int compareTo(Price o) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 
-	@Setter
-	@Getter
-	private String accountId;
-
-	@Setter
-	@Getter
-	private String accountName;
-
-	@Setter
-	@Getter
-	private String price;
 }
-
